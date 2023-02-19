@@ -19,16 +19,16 @@ URDAD is structured around ``layers" of date specifics.
 
 \begin{itemize}
     \item The \textbf{top layer} is the year. A polynomial regression is used to predict the total amount of a specific crime committed in a given future year. 
-    \item The \textbf{second layer} is the month. We calculated each month's average contribution (given as a fraction) to the aggregate crime count for the given year. 
-    \item The \textbf{bottom layer} is the day. We calculated each day's average contribution (given as a fraction) to it's month's aggregate crime count. 
+    \item The \textbf{second layer} is the month. We calculated the percent of crime in each month that made up the aggregate crime count in each year, averaged each month's percent values to come up with one average contribution (given as a fraction). 
+    \item The \textbf{bottom layer} is the day. We calculated the percent that each day made up in the aggregate crime for each month, then averaged each day's percent values to come up with one average contribution per month (given as a fraction). 
 \end{itemize}
 
 The outline for calculating the crimes committed on a given date (year, month, day) is given as follows:
 
 \begin{enumerate}
     \item Use the top layer to predict the total number of crime committed that year. For sake of convenience, call this number $N$.
-    \item Obtain the given month's average contribution from the second layer (call this fraction $M$). $N \times M$ will then be the amount of crime predicted to occur in the given month.
-    \item Obtain the given day's average contribution from the bottom layer (call this fraction $D$). $N \times M \times D$ will then be the amount of crime predicted to occur on the given day.
+    \item Obtain the given month's percent contribution from the second layer (call this fraction $M$). $N \times M$ will then be the amount of crime predicted to occur in the given month.
+    \item Obtain the given day's percent contribution to the month from the bottom layer (call this fraction $D$). $N \times M \times D$ will then be the amount of crime predicted to occur on the given day.
 \end{enumerate}
 
 \section{Layers of Time Data}
@@ -47,7 +47,7 @@ The ``bottom layer'', or the day, is essentially a model of each day's contribut
 
 \section{Scalability}
 
-An important consideration when designing our model was scalability. We created separate trends for days, months, and years in order to avoid overfitting for specific dates. The top layer uses a carefully considered model to make future predictions, so it is viable for many years in the future. Thus, it can be extended beyond the required ``3 months in the future'' requirement given in the Datathon prompt. \bigskip
+An important consideration when designing our model was scalability. We created separate trends for days, months, and years in order to avoid overfitting for specific dates. The top layer uses a carefully considered model to make future predictions, so it is viable for many years in the future. Thus, it can be extended beyond the required ``3 months into the future'' prediction from the Datathon prompt. \bigskip
 
 [Add some stuff about how our implementation is fast, idk]
 
