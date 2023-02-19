@@ -45,4 +45,14 @@ The ``second layer'', or the month, is essentially a model of each month's contr
 
 The ``bottom layer'', or the day, is essentially a model of each day's contribution to the total crime count of a month. We first calculated the percent of each month's crimes committed on a given day for every day of every month, over all of the years. Then, we averaged the percents we obtained over all the years sampled. Overall, this yielded the \textbf{average percentage of a month's crimes committed on a given day}. \bigskip 
 
+\section{Scalability}
+
+An important consideration when designing our model was scalability. We created separate trends for days, months, and years in order to avoid overfitting for specific dates. The top layer uses a carefully considered model to make future predictions, so it is viable for many years in the future. Thus, it can be extended beyond the required ``3 months in the future'' requirement given in the Datathon prompt. \bigskip
+
+[Add some stuff about how our implementation is fast, idk]
+
+\section{4th Datathon-Specific Implementation}
+
+[Add some very specific stuff on how we made the algo, e.g., using pandas to create different dataframes, using tensorflow and sklearn]
+
 \end{document}
